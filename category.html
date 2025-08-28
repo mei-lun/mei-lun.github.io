@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术分类 - 后端笔记</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-primary { background-color: #3b82f6; }
+        .text-primary { color: #3b82f6; }
+        .bg-primary:hover { background-color: #2563eb; }
+        .text-primary:hover { color: #2563eb; }
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="text-xl font-bold text-gray-900">
+                        后端笔记
+                    </a>
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="index.html" class="text-gray-600 hover:text-gray-900 transition-colors">首页</a>
+                        <a href="index.html#categories" class="text-gray-600 hover:text-gray-900 transition-colors">分类</a>
+                        <a href="page.html?file=testIndex.md" class="text-gray-600 hover:text-gray-900 transition-colors">项目文档</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="https://github.com/yourusername" target="_blank" class="text-gray-600 hover:text-gray-900 transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="pt-8 pb-12">
+        <div class="container mx-auto px-4">
+            <!-- 分类标题 -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <nav class="text-sm mb-4">
+                    <a href="index.html" class="text-gray-500 hover:text-gray-700">首页</a>
+                    <span class="text-gray-400 mx-2">/</span>
+                    <span class="text-gray-900" id="category-name">分类</span>
+                </nav>
+                <div class="bg-white rounded-xl shadow-sm p-8">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-900 mb-2" id="category-title">
+                                <i class="fas fa-folder-open text-primary mr-3"></i>
+                                加载中...
+                            </h1>
+                            <p class="text-gray-600" id="category-description">
+                                正在加载分类信息...
+                            </p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-3xl font-bold text-primary" id="article-count">-</div>
+                            <div class="text-sm text-gray-500">篇文章</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 文章列表 -->
+            <div class="max-w-4xl mx-auto">
+                <div id="articles-container" class="space-y-6">
+                    <!-- 加载中状态 -->
+                    <div class="bg-white rounded-xl shadow-sm p-8 text-center">
+                        <i class="fas fa-spinner fa-spin text-2xl text-gray-400 mb-4"></i>
+                        <p class="text-gray-500">正在加载文章...</p>
+                    </div>
+                </div>
+
+                <!-- 无文章提示 -->
+                <div id="no-articles" class="hidden bg-white rounded-xl shadow-sm p-12 text-center">
+                    <i class="fas fa-folder-open text-4xl text-gray-300 mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">暂无文章</h3>
+                    <p class="text-gray-500 mb-6">该分类下暂时还没有文章，敬请期待！</p>
+                    <a href="index.html" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+                        返回首页
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">关于博主</h4>
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-user text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">后端开发工程师</div>
+                            <div class="text-sm text-gray-400">专注Java后端技术</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        记录技术成长，分享后端开发的思考与实践。热爱开源，乐于分享。
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="index.html#categories" class="text-gray-400 hover:text-white transition-colors">技术分类</a></li>
+                        <li><a href="page.html?file=testIndex.md" class="text-gray-400 hover:text-white transition-colors">项目文档</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系方式</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/yourusername" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="mailto:your@email.com" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2024 后端笔记. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 分类配置
+        const categories = {
+            java: {
+                name: 'Java',
+                icon: 'fab fa-java',
+                color: 'from-orange-500 to-red-500',
+                description: 'Java核心技术、Spring框架、JVM调优等后端开发相关内容',
+                articles: [
+                    {
+                        title: 'Spring Boot 异步任务最佳实践',
+                        date: '2023-06-18',
+                        description: '分享在实际项目中使用Spring Boot异步任务处理高并发场景的经验，包括线程池配置、异常处理和性能监控的完整实践。',
+                        tags: ['Java', 'Spring Boot', '异步编程'],
+                        readTime: '8分钟',
+                        views: '1.2k',
+                        file: 'java/spring-boot-async.md'
+                    },
+                    {
+                        title: 'Java并发编程：线程池使用指南',
+                        date: '2023-06-15',
+                        description: '深入解析Java线程池的原理、配置参数和使用场景，结合实际案例分析线程池的最佳实践。',
+                        tags: ['Java', '并发编程', '线程池'],
+                        readTime: '10分钟',
+                        views: '956',
+                        file: 'java/java-thread-pool.md'
+                    },
+                    {
+                        title: 'JVM内存模型与垃圾回收机制',
+                        date: '2023-06-10',
+                        description: '详细讲解JVM内存模型的各个区域、垃圾回收算法和调优技巧，帮助理解Java程序的性能优化。',
+                        tags: ['Java', 'JVM', '性能优化'],
+                        readTime: '12分钟',
+                        views: '845',
+                        file: 'java/jvm-memory-gc.md'
+                    },
+                    {
+                        title: 'Java 8 Stream API实战教程',
+                        date: '2023-06-05',
+                        description: '全面介绍Java 8 Stream API的使用方法、常用操作和性能对比，通过实例展示函数式编程的魅力。',
+                        tags: ['Java', 'Stream API', '函数式编程'],
+                        readTime: '7分钟',
+                        views: '623',
+                        file: 'java/java8-stream-api.md'
+                    }
+                ]
+            },
+            database: {
+                name: '数据库',
+                icon: 'fas fa-database',
+                color: 'from-blue-500 to-cyan-500',
+                description: 'MySQL优化、Redis缓存、数据库设计和性能调优实践',
+                articles: [
+                    {
+                        title: 'MySQL索引优化实战案例',
+                        date: '2023-06-10',
+                        description: '从一个生产环境慢查询问题出发，分析如何通过索引优化将查询时间从5秒降至100毫秒，包含完整的优化过程和性能对比。',
+                        tags: ['MySQL', '索引优化', '性能调优'],
+                        readTime: '9分钟',
+                        views: '856',
+                        file: 'database/mysql-index-optimization.md'
+                    },
+                    {
+                        title: 'Redis缓存穿透、击穿、雪崩解决方案',
+                        date: '2023-06-08',
+                        description: '深入分析Redis缓存的三大问题，提供完整的解决方案和代码实现，保障系统稳定性。',
+                        tags: ['Redis', '缓存', '高并发'],
+                        readTime: '11分钟',
+                        views: '742',
+                        file: 'database/redis-cache-problems.md'
+                    },
+                    {
+                        title: 'MySQL事务隔离级别详解',
+                        date: '2023-06-03',
+                        description: '详细讲解MySQL的四种事务隔离级别，通过实例演示脏读、不可重复读和幻读问题。',
+                        tags: ['MySQL', '事务', '数据库'],
+                        readTime: '8分钟',
+                        views: '534',
+                        file: 'database/mysql-transaction-isolation.md'
+                    }
+                ]
+            },
+            distributed: {
+                name: '分布式',
+                icon: 'fas fa-cloud',
+                color: 'from-purple-500 to-indigo-500',
+                description: '微服务架构、分布式锁、消息队列、服务治理等分布式系统实践',
+                articles: [
+                    {
+                        title: '分布式锁实现方案对比',
+                        date: '2023-06-02',
+                        description: '对比Redis、ZooKeeper和数据库实现分布式锁的优缺点，及在广州某电商平台的选型实践和性能测试结果。',
+                        tags: ['分布式锁', 'Redis', 'ZooKeeper'],
+                        readTime: '10分钟',
+                        views: '623',
+                        file: 'distributed/distributed-lock-comparison.md'
+                    },
+                    {
+                        title: '微服务架构设计实践',
+                        date: '2023-05-28',
+                        description: '分享微服务架构的设计原则、服务拆分策略、通信方式和治理方案，结合实际项目经验。',
+                        tags: ['微服务', '架构设计', '服务治理'],
+                        readTime: '15分钟',
+                        views: '512',
+                        file: 'distributed/microservice-architecture.md'
+                    },
+                    {
+                        title: '消息队列选型与使用实践',
+                        date: '2023-05-25',
+                        description: '对比Kafka、RabbitMQ、RocketMQ等消息队列的特性和使用场景，提供选型建议和最佳实践。',
+                        tags: ['消息队列', 'Kafka', 'RabbitMQ'],
+                        readTime: '12分钟',
+                        views: '445',
+                        file: 'distributed/message-queue-practice.md'
+                    }
+                ]
+            },
+            springboot: {
+                name: 'Spring Boot',
+                icon: 'fas fa-leaf',
+                color: 'from-green-500 to-emerald-500',
+                description: 'Spring Boot快速开发、自动配置、Starter使用和最佳实践指南',
+                articles: [
+                    {
+                        title: 'Spring Boot Starter自定义开发',
+                        date: '2023-05-20',
+                        description: '详细讲解如何开发自定义的Spring Boot Starter，包括自动配置、条件注解和Starter结构设计。',
+                        tags: ['Spring Boot', 'Starter', '自动配置'],
+                        readTime: '9分钟',
+                        views: '567',
+                        file: 'springboot/spring-boot-starter-custom.md'
+                    },
+                    {
+                        title: 'Spring Boot配置中心实践',
+                        date: '2023-05-15',
+                        description: '介绍Spring Boot集成配置中心的完整方案，包括Apollo、Nacos等主流配置中心的使用对比。',
+                        tags: ['Spring Boot', '配置中心', 'Apollo'],
+                        readTime: '8分钟',
+                        views: '423',
+                        file: 'springboot/spring-boot-config-center.md'
+                    },
+                    {
+                        title: 'Spring Boot生产环境调优指南',
+                        date: '2023-05-10',
+                        description: '分享Spring Boot在生产环境的调优经验，包括内存配置、线程池设置和监控指标。',
+                        tags: ['Spring Boot', '生产环境', '性能调优'],
+                        readTime: '7分钟',
+                        views: '389',
+                        file: 'springboot/spring-boot-production-tuning.md'
+                    }
+                ]
+            },
+            performance: {
+                name: '性能优化',
+                icon: 'fas fa-rocket',
+                color: 'from-yellow-500 to-orange-500',
+                description: 'JVM调优、代码优化、系统性能监控和性能测试实战经验',
+                articles: [
+                    {
+                        title: 'JVM性能调优实战',
+                        date: '2023-05-05',
+                        description: '从实际案例出发，讲解JVM性能调优的方法和工具，包括内存分析、GC调优和性能测试。',
+                        tags: ['JVM', '性能调优', 'GC'],
+                        readTime: '13分钟',
+                        views: '478',
+                        file: 'performance/jvm-performance-tuning.md'
+                    },
+                    {
+                        title: '系统性能监控方案设计',
+                        date: '2023-04-28',
+                        description: '设计完整的系统性能监控方案，包括指标收集、告警设置和可视化展示。',
+                        tags: ['性能监控', 'Prometheus', 'Grafana'],
+                        readTime: '10分钟',
+                        views: '356',
+                        file: 'performance/system-performance-monitoring.md'
+                    }
+                ]
+            },
+            projects: {
+                name: '项目实战',
+                icon: 'fas fa-project-diagram',
+                color: 'from-teal-500 to-blue-500',
+                description: '完整的项目开发案例、架构设计、代码实现和部署上线全过程',
+                articles: [
+                    {
+                        title: '电商秒杀系统设计与实现',
+                        date: '2023-04-20',
+                        description: '从零开始设计和实现一个高并发的电商秒杀系统，包括架构设计、数据库设计、缓存策略和限流方案。',
+                        tags: ['项目实战', '秒杀系统', '高并发'],
+                        readTime: '20分钟',
+                        views: '892',
+                        file: 'projects/seckill-system-design.md'
+                    },
+                    {
+                        title: '分布式文件存储系统',
+                        date: '2023-04-15',
+                        description: '基于MinIO实现分布式文件存储系统，包括文件上传、下载、分片存储和CDN加速。',
+                        tags: ['项目实战', '文件存储', 'MinIO'],
+                        readTime: '15分钟',
+                        views: '445',
+                        file: 'projects/distributed-file-storage.md'
+                    }
+                ]
+            }
+        };
+
+        // 获取URL参数
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // 加载分类文章
+        function loadCategoryArticles() {
+            const category = getUrlParameter('category');
+            const categoryData = categories[category];
+
+            if (!categoryData) {
+                // 分类不存在
+                document.getElementById('category-title').textContent = '分类不存在';
+                document.getElementById('category-description').textContent = '抱歉，该分类不存在或暂无内容。';
+                document.getElementById('article-count').textContent = '0';
+                document.getElementById('articles-container').innerHTML = '';
+                document.getElementById('no-articles').classList.remove('hidden');
+                return;
+            }
+
+            // 更新分类信息
+            document.getElementById('category-name').textContent = categoryData.name;
+            document.getElementById('category-title').innerHTML = 
+                `<i class="${categoryData.icon} text-primary mr-3"></i>${categoryData.name}`;
+            document.getElementById('category-description').textContent = categoryData.description;
+            document.getElementById('article-count').textContent = categoryData.articles.length;
+
+            // 加载文章列表
+            const container = document.getElementById('articles-container');
+            
+            if (categoryData.articles.length === 0) {
+                container.innerHTML = '';
+                document.getElementById('no-articles').classList.remove('hidden');
+                return;
+            }
+
+            container.innerHTML = '';
+            categoryData.articles.forEach((article, index) => {
+                const articleElement = createArticleElement(article, index);
+                container.appendChild(articleElement);
+            });
+
+            // 添加淡入动画
+            setTimeout(() => {
+                const articles = container.querySelectorAll('.article-card');
+                articles.forEach((article, index) => {
+                    setTimeout(() => {
+                        article.classList.add('fade-in');
+                    }, index * 100);
+                });
+            }, 100);
+        }
+
+        // 创建文章元素
+        function createArticleElement(article, index) {
+            const div = document.createElement('div');
+            div.className = 'bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 article-card opacity-0';
+            
+            const tagsHtml = article.tags.map(tag => 
+                `<span class="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs mr-2">${tag}</span>`
+            ).join('');
+
+            div.innerHTML = `
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <span><i class="fa fa-calendar mr-1"></i> ${article.date}</span>
+                        <span class="mx-2">•</span>
+                        <span><i class="fa fa-clock-o mr-1"></i> ${article.readTime}</span>
+                        <span class="mx-2">•</span>
+                        <span><i class="fa fa-eye mr-1"></i> ${article.views} 阅读</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 hover:text-primary transition-colors">
+                        <a href="page.html?file=${article.file}" class="text-gray-900 hover:text-primary">${article.title}</a>
+                    </h3>
+                    <p class="text-gray-600 mb-4 leading-relaxed">${article.description}</p>
+                    <div class="flex items-center justify-between">
+                        <div>${tagsHtml}</div>
+                        <a href="page.html?file=${article.file}" class="text-primary hover:text-blue-600 font-medium">
+                            阅读全文 →
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            return div;
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCategoryArticles();
+        });
+    </script>
+</body>
+</html>

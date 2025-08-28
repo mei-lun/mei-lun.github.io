@@ -6,8 +6,8 @@
     <title>后端笔记 | 服务端程序员的技术博客</title>
     <!-- 引入Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 引入Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- 引入Google字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
@@ -49,18 +49,14 @@
 <body class="font-inter bg-light text-dark">
     <!-- 导航栏 -->
     <header class="fixed w-full top-0 z-50 bg-white/90 border-b border-gray-200 backdrop-blur-sm">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="flex items-center space-x-2">
-                <span class="text-primary text-xl"><i class="fa fa-code"></i></span>
-                <span class="font-bold text-lg md:text-xl">后端笔记</span>
-            </a>
-            
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">           
             <!-- 桌面导航 -->
             <nav class="hidden md:flex items-center space-x-6">
                 <a href="#" class="font-medium text-primary">首页</a>
                 <a href="#" class="font-medium text-gray-600 hover:text-primary transition-colors">文章</a>
                 <a href="#" class="font-medium text-gray-600 hover:text-primary transition-colors">技术栈</a>
                 <a href="#" class="font-medium text-gray-600 hover:text-primary transition-colors">关于</a>
+                <a href="github-test.html" class="font-medium text-gray-600 hover:text-primary transition-colors">GitHub文档</a>
             </nav>
             
             <!-- 移动端菜单按钮 -->
@@ -75,236 +71,174 @@
             <a href="#" class="block py-2 font-medium text-gray-600 hover:text-primary">文章</a>
             <a href="#" class="block py-2 font-medium text-gray-600 hover:text-primary">技术栈</a>
             <a href="#" class="block py-2 font-medium text-gray-600 hover:text-primary">关于</a>
+            <a href="github-test.html" class="block py-2 font-medium text-gray-600 hover:text-primary">GitHub文档</a>
         </div>
     </header>
 
     <!-- 主内容区 -->
     <main class="pt-16 pb-12">
-        <!-- 头部区域 -->
-        <section class="bg-gradient-to-r from-primary/10 to-primary/20 py-12 md:py-20 border-b border-gray-200">
+        <!-- 头部区域 - 更简洁的博客风格 -->
+        <section class="bg-gradient-to-br from-white via-gray-50 to-gray-100 py-16 md:py-24 border-b border-gray-100">
             <div class="container mx-auto px-4">
-                <div class="max-w-3xl">
-                    <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4 text-shadow-sm">
-                        后端开发的思考与实践
-                    </h1>
-                    <p class="text-dark/90 text-lg mb-6">
-                        记录一个程序员的技术成长，分享后端开发、系统设计和架构思考
-                    </p>
-                    <div class="flex items-center text-dark/80 text-sm">
-                        <i class="fa fa-map-marker mr-2"></i>
-                        <span>坐标：广州 · 专注后端开发</span>
+                <div class="max-w-4xl mx-auto text-center">
+                    <div class="mb-8">
+                        <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-gray-900 mb-4 leading-tight">
+                            BLOGS
+                        </h1>
+                        <p class="text-xl md:text-2xl text-gray-600 mb-6 max-w-2xl mx-auto">
+                            记录技术成长，分享后端开发的技术与实践
+                        </p>
+                        <div class="flex items-center justify-center text-gray-500 text-sm space-x-6">
+                            <span><i class="fa fa-database mr-1"></i>CPP/Golang</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 快速导航 -->
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <a href="#categories" class="bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition-colors">
+                            <i class="fa fa-folder-open-o mr-1"></i>技术分类
+                        </a>
+                        <a href="page.html?file=testIndex.md" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm hover:bg-gray-300 transition-colors">
+                            <i class="fa fa-book mr-1"></i>项目文档
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 最新文章 -->
-        <section class="py-10">
-            <div class="container mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6 flex items-center">
-                    <i class="fa fa-file-text-o text-primary mr-2"></i>最新文章
+        <!-- 技术分类展示 -->
+        <div class="container mx-auto px-4 py-12">
+            <div class="max-w-6xl mx-auto">
+                <h2 id="categories" class="text-3xl font-bold text-center mb-12 text-gray-900">
+                    技术分类
                 </h2>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- 文章1 -->
-                    <article class="bg-white p-5 rounded-lg border border-gray-200 card-hover">
-                        <div class="flex items-center text-sm text-gray-500 mb-3">
-                            <span><i class="fa fa-calendar mr-1"></i> 2023-06-18</span>
-                            <span class="mx-2">•</span>
-                            <span><i class="fa fa-tag mr-1"></i> Java</span>
+                <!-- 分类网格 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Java分类 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-all duration-200 overflow-hidden">
+                        <div class="bg-slate-50 h-28 flex items-center justify-center border-b border-slate-200">
+                            <i class="fab fa-java text-slate-700 text-3xl"></i>
                         </div>
-                        <h3 class="text-lg font-semibold mb-2 hover:text-primary transition-colors">
-                            <a href="#">Spring Boot 异步任务最佳实践</a>
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-3 line-clamp-2">
-                            分享在实际项目中使用Spring Boot异步任务处理高并发场景的经验，包括线程池配置和异常处理。
-                        </p>
-                        <a href="#" class="text-primary text-sm hover:underline">阅读更多 →</a>
-                    </article>
-                    
-                    <!-- 文章2 -->
-                    <article class="bg-white p-5 rounded-lg border border-gray-200 card-hover">
-                        <div class="flex items-center text-sm text-gray-500 mb-3">
-                            <span><i class="fa fa-calendar mr-1"></i> 2023-06-10</span>
-                            <span class="mx-2">•</span>
-                            <span><i class="fa fa-tag mr-1"></i> 数据库</span>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-2 hover:text-primary transition-colors">
-                            <a href="#">MySQL索引优化实战案例</a>
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-3 line-clamp-2">
-                            从一个生产环境慢查询问题出发，分析如何通过索引优化将查询时间从5秒降至100毫秒。
-                        </p>
-                        <a href="#" class="text-primary text-sm hover:underline">阅读更多 →</a>
-                    </article>
-                    
-                    <!-- 文章3 -->
-                    <article class="bg-white p-5 rounded-lg border border-gray-200 card-hover">
-                        <div class="flex items-center text-sm text-gray-500 mb-3">
-                            <span><i class="fa fa-calendar mr-1"></i> 2023-06-02</span>
-                            <span class="mx-2">•</span>
-                            <span><i class="fa fa-tag mr-1"></i> 分布式</span>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-2 hover:text-primary transition-colors">
-                            <a href="#">分布式锁实现方案对比</a>
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-3 line-clamp-2">
-                            对比Redis、ZooKeeper和数据库实现分布式锁的优缺点，及在广州某电商平台的选型实践。
-                        </p>
-                        <a href="#" class="text-primary text-sm hover:underline">阅读更多 →</a>
-                    </article>
-                    
-                    <!-- 文章4 -->
-                    <article class="bg-white p-5 rounded-lg border border-gray-200 card-hover">
-                        <div class="flex items-center text-sm text-gray-500 mb-3">
-                            <span><i class="fa fa-calendar mr-1"></i> 2023-05-25</span>
-                            <span class="mx-2">•</span>
-                            <span><i class="fa fa-tag mr-1"></i> 性能优化</span>
-                        </div>
-                        <h3 class="text-lg font-semibold mb-2 hover:text-primary transition-colors">
-                            <a href="#">JVM调优实践：从OOM到稳定运行</a>
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-3 line-clamp-2">
-                            记录一次线上JVM内存溢出问题的排查过程，及后续的参数调优和监控方案。
-                        </p>
-                        <a href="#" class="text-primary text-sm hover:underline">阅读更多 →</a>
-                    </article>
-                </div>
-                
-                <div class="mt-8 text-center">
-                    <a href="#" class="inline-flex items-center text-primary hover:underline">
-                        查看所有文章 <i class="fa fa-angle-right ml-1"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 技术分类 -->
-        <section class="py-10 bg-gray-50">
-            <div class="container mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6 flex items-center">
-                    <i class="fa fa-folder-open-o text-primary mr-2"></i>技术分类
-                </h2>
-                
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                    <a href="#" class="bg-white p-4 rounded-lg text-center border border-gray-200 hover:border-primary transition-colors">
-                        <i class="fa fa-java text-2xl mb-2 text-orange-600"></i>
-                        <p class="font-medium">Java</p>
-                        <p class="text-xs text-gray-500 mt-1">24篇</p>
-                    </a>
-                    
-                    <a href="#" class="bg-white p-4 rounded-lg text-center border border-gray-200 hover:border-primary transition-colors">
-                        <i class="fa fa-database text-2xl mb-2 text-blue-600"></i>
-                        <p class="font-medium">数据库</p>
-                        <p class="text-xs text-gray-500 mt-1">18篇</p>
-                    </a>
-                    
-                    <a href="#" class="bg-white p-4 rounded-lg text-center border border-gray-200 hover:border-primary transition-colors">
-                        <i class="fa fa-cloud text-2xl mb-2 text-gray-700"></i>
-                        <p class="font-medium">分布式</p>
-                        <p class="text-xs text-gray-500 mt-1">15篇</p>
-                    </a>
-                    
-                    <a href="#" class="bg-white p-4 rounded-lg text-center border border-gray-200 hover:border-primary transition-colors">
-                        <i class="fa fa-cogs text-2xl mb-2 text-green-600"></i>
-                        <p class="font-medium">系统设计</p>
-                        <p class="text-xs text-gray-500 mt-1">12篇</p>
-                    </a>
-                    
-                    <a href="#" class="bg-white p-4 rounded-lg text-center border border-gray-200 hover:border-primary transition-colors">
-                        <i class="fa fa-code-fork text-2xl mb-2 text-purple-600"></i>
-                        <p class="font-medium">Git</p>
-                        <p class="text-xs text-gray-500 mt-1">9篇</p>
-                    </a>
-                    
-                    <a href="#" class="bg-white p-4 rounded-lg text-center border border-gray-200 hover:border-primary transition-colors">
-                        <i class="fa fa-terminal text-2xl mb-2 text-gray-900"></i>
-                        <p class="font-medium">Linux</p>
-                        <p class="text-xs text-gray-500 mt-1">11篇</p>
-                    </a>
-                    
-                    <a href="#" class="bg-white p-4 rounded-lg text-center border border-gray-200 hover:border-primary transition-colors">
-                        <i class="fa fa-line-chart text-2xl mb-2 text-red-600"></i>
-                        <p class="font-medium">性能优化</p>
-                        <p class="text-xs text-gray-500 mt-1">8篇</p>
-                    </a>
-                    
-                    <a href="#" class="bg-white p-4 rounded-lg text-center border border-gray-200 hover:border-primary transition-colors">
-                        <i class="fa fa-shield text-2xl mb-2 text-teal-600"></i>
-                        <p class="font-medium">安全</p>
-                        <p class="text-xs text-gray-500 mt-1">6篇</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 关于博主 -->
-        <section class="py-10">
-            <div class="container mx-auto px-4">
-                <div class="bg-white rounded-lg border border-gray-200 p-6">
-                    <h2 class="text-2xl font-bold mb-4 flex items-center">
-                        <i class="fa fa-user-o text-primary mr-2"></i>关于我
-                    </h2>
-                    
-                    <div class="flex flex-col md:flex-row items-start md:items-center gap-4">
-                        <img src="https://picsum.photos/id/1012/100/100" alt="博主头像" class="w-20 h-20 rounded-full object-cover border-2 border-primary/20">
-                        
-                        <div>
-                            <p class="text-gray-700 mb-2">
-                                广州某互联网公司后端开发工程师，主要技术栈：Java、Spring Cloud、MySQL、Redis等。
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold mb-2 text-slate-800">Java</h3>
+                            <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                                Java核心技术、Spring框架、JVM调优等后端开发相关内容
                             </p>
-                            <p class="text-gray-700 mb-3">
-                                热衷于研究分布式系统和性能优化，偶尔分享程序员生活。
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-500 font-medium">12篇文章</span>
+                                <a href="category.html?category=java" class="bg-slate-700 text-white px-3 py-1.5 rounded text-sm hover:bg-slate-800 transition-colors">
+                                    查看
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 数据库分类 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-all duration-200 overflow-hidden">
+                        <div class="bg-slate-50 h-28 flex items-center justify-center border-b border-slate-200">
+                            <i class="fas fa-database text-slate-700 text-3xl"></i>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold mb-2 text-slate-800">数据库</h3>
+                            <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                                MySQL优化、Redis缓存、数据库设计和性能调优实践
                             </p>
-                            <div class="flex space-x-3">
-                                <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="fa fa-github text-lg"></i></a>
-                                <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="fa fa-csdn text-lg"></i></a>
-                                <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="fa fa-weixin text-lg"></i></a>
-                                <a href="#" class="text-gray-500 hover:text-primary transition-colors"><i class="fa fa-envelope-o text-lg"></i></a>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-500 font-medium">8篇文章</span>
+                                <a href="category.html?category=database" class="bg-slate-700 text-white px-3 py-1.5 rounded text-sm hover:bg-slate-800 transition-colors">
+                                    查看
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 分布式分类 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-all duration-200 overflow-hidden">
+                        <div class="bg-slate-50 h-28 flex items-center justify-center border-b border-slate-200">
+                            <i class="fas fa-cloud text-slate-700 text-3xl"></i>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold mb-2 text-slate-800">分布式</h3>
+                            <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                                微服务架构、分布式锁、消息队列、服务治理等分布式系统实践
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-500 font-medium">6篇文章</span>
+                                <a href="category.html?category=distributed" class="bg-slate-700 text-white px-3 py-1.5 rounded text-sm hover:bg-slate-800 transition-colors">
+                                    查看
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Spring Boot分类 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-all duration-200 overflow-hidden">
+                        <div class="bg-slate-50 h-28 flex items-center justify-center border-b border-slate-200">
+                            <i class="fas fa-leaf text-slate-700 text-3xl"></i>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold mb-2 text-slate-800">Spring Boot</h3>
+                            <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                                Spring Boot快速开发、自动配置、Starter使用和最佳实践指南
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-500 font-medium">10篇文章</span>
+                                <a href="category.html?category=springboot" class="bg-slate-700 text-white px-3 py-1.5 rounded text-sm hover:bg-slate-800 transition-colors">
+                                    查看
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 性能优化分类 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-all duration-200 overflow-hidden">
+                        <div class="bg-slate-50 h-28 flex items-center justify-center border-b border-slate-200">
+                            <i class="fas fa-rocket text-slate-700 text-3xl"></i>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold mb-2 text-slate-800">性能优化</h3>
+                            <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                                JVM调优、代码优化、系统性能监控和性能测试实战经验
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-500 font-medium">7篇文章</span>
+                                <a href="category.html?category=performance" class="bg-slate-700 text-white px-3 py-1.5 rounded text-sm hover:bg-slate-800 transition-colors">
+                                    查看
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 项目实战分类 -->
+                    <div class="bg-white rounded-lg shadow-sm border border-slate-200 hover:shadow-md transition-all duration-200 overflow-hidden">
+                        <div class="bg-slate-50 h-28 flex items-center justify-center border-b border-slate-200">
+                            <i class="fas fa-project-diagram text-slate-700 text-3xl"></i>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="text-lg font-semibold mb-2 text-slate-800">项目实战</h3>
+                            <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                                完整的项目开发案例、架构设计、代码实现和部署上线全过程
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-500 font-medium">5篇文章</span>
+                                <a href="category.html?category=projects" class="bg-slate-700 text-white px-3 py-1.5 rounded text-sm hover:bg-slate-800 transition-colors">
+                                    查看
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- 友链 -->
-        <section class="py-10 bg-gray-100">
-            <div class="container mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6 flex items-center">
-                    <i class="fa fa-link text-primary mr-2"></i>技术友链
-                </h2>
-                
-                <div class="flex flex-wrap gap-3">
-                    <a href="#" class="bg-white px-4 py-2 rounded border border-gray-200 text-gray-700 hover:border-primary hover:text-primary transition-colors text-sm">
-                        后端架构笔记
-                    </a>
-                    <a href="#" class="bg-white px-4 py-2 rounded border border-gray-200 text-gray-700 hover:border-primary hover:text-primary transition-colors text-sm">
-                        数据库进阶
-                    </a>
-                    <a href="#" class="bg-white px-4 py-2 rounded border border-gray-200 text-gray-700 hover:border-primary hover:text-primary transition-colors text-sm">
-                        分布式系统实践
-                    </a>
-                </div>
+        </div>
             </div>
-        </section>
+        </div>
     </main>
 
-    <!-- 页脚 -->
-    <footer class="bg-gray-100 text-gray-800 py-8">
-        <div class="container mx-auto px-4">
-            <div class="text-center">
-                <div class="flex items-center justify-center space-x-2 mb-4">
-                    <span class="text-primary text-xl"><i class="fa fa-code"></i></span>
-                    <span class="font-bold text-lg">后端笔记</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">
-                    一个后端开发者的技术博客 | 专注Java、分布式系统和性能优化
-                </p>
-                <p class="text-gray-500 text-xs">
-                    © 2023 后端笔记. 保留所有权利.
-                </p>
-            </div>
+    <!-- 简化页脚 -->
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2023 技术博客. All rights reserved.</p>
         </div>
     </footer>
 
