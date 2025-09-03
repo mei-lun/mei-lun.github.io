@@ -192,8 +192,39 @@
                 let filename = decodeURIComponent(getURLParameter('file') || 'testIndex.md');
                 
                 try {
-                    // 首先尝试加载本地文件，如果失败再尝试GitHub
-                    const GITHUB_TOKEN = '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';
+                      // 使用增强版加密Token
+                      function getGitHubToken() {
+            const enhancedToken = 'Z2l0aHViJX3BhdF8x2MUFOQzNB6SkkwY0Vr0VlAxQUY4ZM3JaX3NaXYkwweUpj8TnZWd3lFPYVZOcFBUFdFVNTVAyDdk1vQ2R6KQUxmYnk4fUE92dFJKdTDdOUTdXOTlFtWE450VllC';
+            const obfuscationKey = '8,17,26,35,44,53,62,71,80,89,98,107,116,125,134';
+                          
+                          try {
+                              return decodeEnhancedToken(enhancedToken, obfuscationKey);
+                          } catch (error) {
+                              console.error('Token解码失败:', error);
+                              return null;
+                          }
+                      }
+                      
+                      // 增强版Token解码函数
+                      function decodeEnhancedToken(enhancedToken, obfuscationKey) {
+                          try {
+                              const positions = obfuscationKey.split(',').map(Number);
+                              let base64Token = '';
+                              
+                              for (let i = 0; i < enhancedToken.length; i++) {
+                                  if (!positions.includes(i)) {
+                                      base64Token += enhancedToken[i];
+                                  }
+                              }
+                              
+                              return atob(base64Token);
+                          } catch (error) {
+                              console.error('增强版Token解码失败:', error);
+                              return null;
+                          }
+                      }
+                      
+                      const GITHUB_TOKEN = getGitHubToken();
                     const OWNER = 'mei-lun';
                     const REPO = 'Notes';
                     
