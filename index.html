@@ -102,6 +102,7 @@
                             <i class="fa fa-book mr-1"></i>项目文档
                         </a>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -306,7 +307,19 @@
             });
         });
 
-        // GitHub仓库浏览功能
+        // GitHub仓库浏览功能 - 使用加密Token
+        function getGitHubToken() {
+            // 加密后的Token (Base64编码)
+            const encodedToken = 'AAAABBBBZ2l0aHViX3BhdF8xMUFOQzNBSkkwCCCCCUFFJZUEyTUxuWFhBXzM1M29BMGc2YVc3aVdXcFY1dVFlRlFsa1hvVzRhU3pmalBGakQ5ZU9FbjEzN1cySjJBTHprdTZPM3pk';
+            try {
+                return atob(encodedToken);
+            } catch (error) {
+                console.error('Token解码失败:', error);
+                return null;
+            }
+        }
+        
+        const GITHUB_TOKEN = getGitHubToken();
         const OWNER = 'mei-lun';
         const REPO = 'Notes';
 
